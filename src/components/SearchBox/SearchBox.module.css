@@ -1,0 +1,31 @@
+.textFind {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.inputForm {
+    text-align: left;
+    margin: 0 auto;
+    justify-content: center;
+    width: 500px;
+   
+    /* margin-top: 10px; */
+}
+
+.input {
+    width: 400px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: 1px solid #0b0b0b;
+    box-shadow: 4px 4px 8px rgb(67, 68, 68);
+    font-size: 20px;
+    box-sizing: border-box;
+
+}
+.input:hover {
+    border-color: #28aaf1;
+}
+.input:focus {
+    background-color:aliceblue;
+}
