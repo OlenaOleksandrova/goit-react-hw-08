@@ -10,21 +10,33 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { refreshUser } from "./redux/auth/operations";
+import { selectIsRefreshing } from "./redux/auth/selectors";
+import PrivateRoute from "./components/PrivateRoute";
+import RestrictedRoute from "./components/RestrictedRoute";
 // import { selectIsLoading } from "./redux/contacts/slice";
 // import { useSelector } from "react-redux";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   // const isLoading = useSelector(selectIsLoading);
-  return (
+  return isRefreshing ? null : (
     <> 
     <ToastContainer />
      <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-      </Route>
-      <Route path="/register" element={<RegistrationPage />} />
-      <Route path="/login" element={<LoginPage />} />
+        <Route path="/contacts" element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
+        </Route>
+        <Route path="/login" element={<RestrictedRoute component={<LoginPage />} redirectTo='/contacts' />} />
+        <Route path="/register" element={<RestrictedRoute component={<RegistrationPage />} redirectTo='/contacts' />} />
       </Routes>
     </>
     
