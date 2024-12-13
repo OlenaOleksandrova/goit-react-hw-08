@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilteredContactsMemo } from "../../redux/contactsSlice";
+
 // import { selectFilter } from "../../redux/filtersSlice";
 import Contact from "../Contact/Contact";
 import s from "./ContactList.module.css";
 import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contactsOps";
+
+import { selectFilteredContactsMemo } from "../../redux/contacts/selectors";
+import { fetchContacts } from "../../redux/contacts/operations";
 
 const ContactList = () => {
   const dispatch = useDispatch();
