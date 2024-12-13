@@ -42,3 +42,25 @@
 }
 
 
+.my-toast {
+  background-color: #4caf50;
+  /* Зелений фон */
+  color: white;
+  /* Білий текст */
+  font-size: 16px;
+  /* Розмір шрифту */
+  border-radius: 10px;
+  /* Закруглені кути */
+}
+
+/* Стиль для тексту в тості */
+.my-toast-body {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Стиль для прогрес-бара */
+.my-toast-progress {
+  background-color: #ff9800;
+  /* Помаранчевий прогрес-бар */
+}

@@ -8,12 +8,16 @@ import HomePage from "./pages/HomePage/HomePage";
 import { Route, Routes } from "react-router-dom";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 // import { selectIsLoading } from "./redux/contacts/slice";
 // import { useSelector } from "react-redux";
 
 const App = () => {
   // const isLoading = useSelector(selectIsLoading);
   return (
+    <> 
+    <ToastContainer />
      <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
@@ -21,7 +25,9 @@ const App = () => {
       </Route>
       <Route path="/register" element={<RegistrationPage />} />
       <Route path="/login" element={<LoginPage />} />
-    </Routes>
+      </Routes>
+    </>
+    
     // <div>
     //   <h1>Phonebook</h1>
     //   <ContactForm />

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 
 const RegistrationForm = () => {
@@ -15,7 +16,7 @@ const RegistrationForm = () => {
     dispatch(register(values))
       .unwrap()
       .then(res => {
-      toast(`welcome ${res.user.name}`);
+      toast(`welcome ${res.user.name}`,);
       navigate('/contacts');
       }).catch(() => {
       toast.error('Soory...error...try again')
@@ -31,6 +32,7 @@ const RegistrationForm = () => {
   return (
     <div className={s.wrapper}>
       <h2>Registration</h2>
+
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
               <Form className={s.form}>
           <Field name='name' placeholder='Enter your name' />
