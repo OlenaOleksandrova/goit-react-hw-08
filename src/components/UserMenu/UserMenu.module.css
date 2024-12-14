@@ -2,8 +2,9 @@
     
     box-shadow: 0 0 4px 6px rgb(212, 239, 219);
     padding: 6px 18px;
-    font-size: 16px;
+    font-size: 18px;
     background-color: rgb(181, 244, 223);
+    border: 1px solid #0a3523;
 }
 .logoutButton:hover{
     background-color: rgb(62, 111, 203);

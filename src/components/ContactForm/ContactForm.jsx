@@ -8,7 +8,7 @@ import s from "./ContactForm.module.css";
 const ContactForm = () => {
   const dispatch = useDispatch();
 
-  const orderSchema  = Yup.object({
+  const orderSchema = Yup.object({
     name: Yup.string()
       .min(3, "Мінімум 3 символи")
       .required("Обов'язково"),
@@ -24,34 +24,41 @@ const ContactForm = () => {
       number: values.number,
       completed: false,
     };
-    dispatch(addContact(newContact));
-    resetForm();
-  };
+    dispatch(addContact(newContact))
+      .unwrap()
+      .then(() => {
+        toast.success(`Contact "${values.name}" added successfully!`);
+        resetForm();
+      })
+      .catch(() => {
+        toast.error('Failed to add the contact. Please try again.');
+      });
 
-  return (
-    <Formik
-      initialValues={{ name: "", number: "" }}
-      // orderSchema ={orderSchema }
-       validationSchema={orderSchema}
-      onSubmit={onSubmit}
-    >
-      <Form className={s.form}>
-        <label className={s.label}>
-          Name
-          <Field className={s.input} name="name" />
-          <ErrorMessage name="name" component="div" className={s.error} />
-        </label>
-        <label className={s.label}>
-          Number
-          <Field className={s.input} name="number" />
-          <ErrorMessage name="number" component="div" className={s.error} />
-        </label>
-        <button className={s.buttonForm} type="submit">
-          Add Contact
-        </button>
-      </Form>
-    </Formik>
-  );
+    return (
+      <Formik
+        initialValues={{ name: "", number: "" }}
+        // orderSchema ={orderSchema }
+        validationSchema={orderSchema}
+        onSubmit={onSubmit}
+      >
+        <Form className={s.form}>
+          <label className={s.label}>
+            Name
+            <Field className={s.input} name="name" />
+            <ErrorMessage name="name" component="div" className={s.error} />
+          </label>
+          <label className={s.label}>
+            Number
+            <Field className={s.input} name="number" />
+            <ErrorMessage name="number" component="div" className={s.error} />
+          </label>
+          <button className={s.buttonForm} type="submit">
+            Add Contact
+          </button>
+        </Form>
+      </Formik>
+    );
+  };
 };
 
 export default ContactForm;
