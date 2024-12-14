@@ -1,0 +1,7 @@
+.linkheder {
+    font-size: 30px;
+    color: black;
+}
+.linkheder:hover{
+    color: rgb(77, 77, 231);
+}

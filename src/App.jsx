@@ -32,7 +32,7 @@ const App = () => {
     <ToastContainer />
      <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
+          <Route index element={<HomePage />}/>
         <Route path="/contacts" element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
         </Route>
         <Route path="/login" element={<RestrictedRoute component={<LoginPage />} redirectTo='/contacts' />} />
