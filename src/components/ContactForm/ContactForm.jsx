@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import { nanoid } from "nanoid";
 import s from "./ContactForm.module.css";
+import { toast } from "react-toastify";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const ContactForm = () => {
       number: values.number,
       completed: false,
     };
+
     dispatch(addContact(newContact))
       .unwrap()
       .then(() => {
@@ -31,34 +33,33 @@ const ContactForm = () => {
         resetForm();
       })
       .catch(() => {
-        toast.error('Failed to add the contact. Please try again.');
+        toast.error("Failed to add the contact");
       });
-
-    return (
-      <Formik
-        initialValues={{ name: "", number: "" }}
-        // orderSchema ={orderSchema }
-        validationSchema={orderSchema}
-        onSubmit={onSubmit}
-      >
-        <Form className={s.form}>
-          <label className={s.label}>
-            Name
-            <Field className={s.input} name="name" />
-            <ErrorMessage name="name" component="div" className={s.error} />
-          </label>
-          <label className={s.label}>
-            Number
-            <Field className={s.input} name="number" />
-            <ErrorMessage name="number" component="div" className={s.error} />
-          </label>
-          <button className={s.buttonForm} type="submit">
-            Add Contact
-          </button>
-        </Form>
-      </Formik>
-    );
   };
+
+  return (
+    <Formik
+      initialValues={{ name: "", number: "" }}
+      validationSchema={orderSchema}
+      onSubmit={onSubmit}
+    >
+      <Form className={s.form}>
+        <label className={s.label}>
+          Name
+          <Field className={s.input} name="name" />
+          <ErrorMessage name="name" component="div" className={s.error} />
+        </label>
+        <label className={s.label}>
+          Number
+          <Field className={s.input} name="number" />
+          <ErrorMessage name="number" component="div" className={s.error} />
+        </label>
+        <button className={s.buttonForm} type="submit">
+          Add Contact
+        </button>
+      </Form>
+    </Formik>
+  );
 };
 
 export default ContactForm;

@@ -31,7 +31,7 @@ const RegistrationForm = () => {
   };
   return (
     <div className={s.wrapper}>
-      <h2>Registration</h2>
+      <h2 className={s.registration}>Registration</h2>
 
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
               <Form className={s.form}>

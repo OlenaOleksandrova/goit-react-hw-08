@@ -17,7 +17,7 @@ const Contact = ({ id, name, number }) => {
         toast.success(`Contact "${name}" deleted successfully!`);
       })
       .catch(() => {
-        toast.error('Failed to delete the contact. Please try again.');
+        toast.error('delete the contact');
       });
      setIsModalOpen(false);
   };
